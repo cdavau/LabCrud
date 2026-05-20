@@ -26,3 +26,15 @@ Muestra de la creación de un producto.
 
 Formulario para crearlos.
 
+---
+
+## Conclusiones Técnicas
+
+1. Separación de responsabilidades con MVC
+La implementación del CRUD en Laravel demostró en la práctica cómo el patrón MVC distribuye claramente las responsabilidades del sistema. El modelo Product gestionó exclusivamente la interacción con la base de datos mediante Eloquent, el controlador ProductController concentró toda la lógica de negocio para las operaciones crear, leer, actualizar y eliminar, mientras que las vistas Blade se encargaron únicamente de presentar la información al usuario. Esta separación facilita el mantenimiento del código, ya que cualquier cambio en la base de datos no afecta directamente a las vistas y viceversa.
+
+2. Migraciones como control de versiones de la base de datos
+El uso de migraciones para definir la estructura de la tabla products demostró ser una práctica superior a la creación manual de tablas en phpMyAdmin. Al definir los campos name, description, price y quantity directamente en código PHP, se garantiza que cualquier miembro del equipo pueda reproducir exactamente la misma estructura de base de datos ejecutando un solo comando, eliminando inconsistencias entre entornos de desarrollo y producción.
+
+3. Generación automática de código con herramientas Artisan
+El uso del paquete ibex/crud-generator junto con los comandos Artisan permitió generar automáticamente el controlador, modelo, vistas y rutas del CRUD en segundos. Sin embargo, se observó que el código generado automáticamente requiere ajustes manuales, como agregar los campos al $fillable del modelo, completar las vistas vacías y configurar las reglas de validación en el ProductRequest. Esto evidencia que las herramientas de scaffolding aceleran el desarrollo pero no reemplazan la comprensión de la arquitectura subyacente.
